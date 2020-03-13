@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  html,body {
+    height: 100%;
+  }
+  body{
+    background: #0f3854;
+    background: radial-gradient(ellipse at center,  #0a2e38  0%, #000000 70%);
+    background-size: 100%;
+  }
+  p{
+    margin: 0;
+    padding: 0;
+  }
+  #clock {
+      font-family: 'Share Tech Mono', monospace;
+      color: #ffffff;
+      text-align: center;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      color: #daf6ff;
+      text-shadow: 0 0 20px rgba(10, 175, 230, 1),  0 0 20px rgba(10, 175, 230, 0);
+  }
+  .time {
+    letter-spacing: 0.05em;
+    font-size: 80px;
+    padding: 5px 0;
+  }
+.date {
+    letter-spacing: 0.1em;
+    font-size: 24px;
+  }
+.text {
+    letter-spacing: 0.1em;
+    font-size: 12px;
+    padding: 20px 0 0;
+  }
+  
+</style>
+<body>
+  <div id="clock">
+    <p class="date">
+      <span id="day"></span><span>-</span><span id="month"></span><span>-</span><span id="year"></span>
+      <span id="dday"></span>
+    </p>
+    <p class="time">
+      <span id="hour">00</span>
+      <span>:</span>
+      <span id="minute">00</span>
+      <span>:</span>
+      <span id="second">00</span>
+    </p>
+    <p class="text"></p>
+  </div>
+
+  <script>
+    var time = new Date();
+    function setTime(){
+      var day=parseInt(document.querySelector("#day").innerText);
+      var month=parseInt(document.querySelector("#month").innerText);
+      var year=parseInt(document.querySelector("#year").innerText);
+
+
+      day=time.getDate();
+      month=time.getUTCMonth()+1;
+      year=time.getFullYear();
+      if(second<10){
+        document.querySelector("#day").innerText="0"+day;
+      }
+      else{
+        document.querySelector("#day").innerText=day;
+      }
+      if(minute<10){
+        document.querySelector("#month").innerText="0"+month;
+      }
+      else{
+        document.querySelector("#month").innerText=month;
+      }
+
+      document.querySelector("#year").innerText=year;
+
+    }
+    setTime()
+    
+    second=time.getSeconds();
+    minute=time.getMinutes();
+    hour=time.getHours();
+    if(second<10){
+      document.querySelector("#second").innerText="0"+second;
+    }
+    else{
+      document.querySelector("#second").innerText=second;
+    }
+    if(minute<10){
+      document.querySelector("#minute").innerText="0"+minute;
+    }
+    else{
+      document.querySelector("#minute").innerText=minute;
+    }
+    if(hour<10){
+      document.querySelector("#hour").innerText="0"+hour;
+    }
+    else{
+      document.querySelector("#hour").innerText=hour;
+    }
+  
+
+    var weekday = new Array(7);
+    weekday[0] = "SUN";
+    weekday[1] = "MON";
+    weekday[2] = "TUE";
+    weekday[3] = "WED";
+    weekday[4] = "THU";
+    weekday[5] = "FRI";
+    weekday[6] = "SAT";
+
+    var n = weekday[time.getDay()];
+    document.querySelector("#dday").innerText=n;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    function a(){
+
+
+
+
+
+      var second=parseInt(document.querySelector("#second").innerText);
+      second=second+1;
+      
+      if(second==60){
+       second=0;
+       var minute=parseInt(document.querySelector("#minute").innerText);
+       minute=minute+1;
+       if(minute==60){
+         minute=0;
+         var hour=parseInt(document.querySelector("#hour").innerText);
+         
+         hour=hour+1;
+         if(minute<10){
+           document.querySelector("#minute").innerText="0"+minute;
+          }
+          else{
+            document.querySelector("#minute").innerText=minute;
+          }
+          if(hour==24){
+            hour=0;
+            setTime()
+            // var day=parseInt(document.querySelector("#minute").innerText);
+            // day=hour+1;
+            
+            // if(day==24){
+                
+            // }
+          }
+          if(hour<10){
+              document.querySelector("#hour").innerText="0"+hour;
+            }
+            else{
+              document.querySelector("#hour").innerText=hour;
+            }
+        }
+
+
+       if(minute<10){
+       document.querySelector("#minute").innerText="0"+minute;
+       }
+       else{
+        document.querySelector("#minute").innerText=minute;
+       }
+
+
+
+
+       
+      }
+      
+
+      if(second<10){
+        document.querySelector("#second").innerText="0"+second;
+      }
+      else{
+        document.querySelector("#second").innerText=second;
+      }
+
+
+      
+    }
+    setInterval(function(){a()},1000);
+  </script>
+</body>
+</html>
