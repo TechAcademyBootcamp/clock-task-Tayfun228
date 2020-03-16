@@ -72,13 +72,13 @@
       day=time.getDate();
       month=time.getUTCMonth()+1;
       year=time.getFullYear();
-      if(second<10){
+      if(day<10){
         document.querySelector("#day").innerText="0"+day;
       }
       else{
         document.querySelector("#day").innerText=day;
       }
-      if(minute<10){
+      if(month<10){
         document.querySelector("#month").innerText="0"+month;
       }
       else{
